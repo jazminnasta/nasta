@@ -129,8 +129,10 @@ cosa. El archivo sigue ahí por si la sección vuelve al laminado curvo.
 
 Es todo texto de relleno escrito para que el sitio se vea con contenido real:
 
-- Los nombres de las seis líneas y de los veinticuatro modelos.
-- Las medidas y maderas de cada uno.
+- Los nombres de las cuatro familias y de los veinticinco pájaros.
+- Las medidas y maderas de cada modelo, y el texto de una línea de cada ficha.
+- **Los precios**: los inventé yo, escalonados entre 150.000 y 500.000 ARS según
+  qué tan buena me parece cada pieza. Están en la grilla y en las 25 fichas.
 - El mail `hola@nasta.com.ar` y el Instagram `@nasta`, en la sección Pedidos.
 - La ciudad: dice "Buenos Aires, Argentina" porque hacía falta poner algo.
 - El plazo de entrega (dice dos a tres semanas).

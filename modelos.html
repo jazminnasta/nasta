@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Modelos — NASTA</title>
-<meta name="description" content="Los veinticinco modelos de NASTA, filtrables por familia.">
+<meta name="description" content="Los veinte modelos de NASTA, filtrables por familia.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="estilo.css">
+<script src="todos.js" defer></script>
 <script src="filtro.js" defer></script>
 </head>
 <body>
@@ -43,7 +44,7 @@
 <main class="bloque">
   <div class="centro">
     <div class="bloque__intro">
-      <h2>Veinticinco modelos</h2>
+      <h2><span data-todos="Veinticinco">Veinte</span> modelos</h2>
       <p>Todas de sobremesa. Están agrupadas por lo que hace la pieza: las blandas,
          las de patrón calado, las de planos rectos y las que la madera curvada
          define. Elegí una familia para ver sólo esa.</p>
@@ -55,7 +56,7 @@
         <button type="button" data-linea="geometricas" aria-pressed="false">Geométricas</button>
         <button type="button" data-linea="arquitectonicas" aria-pressed="false">Arquitectónicas</button>
         <button type="button" data-linea="autor" aria-pressed="false">De autor</button>
-      <span class="filtro__cuenta" aria-live="polite">25 modelos</span>
+      <span class="filtro__cuenta" aria-live="polite">20 modelos</span>
     </div>
 
     <div class="grilla">
@@ -109,17 +110,17 @@
           <h3>Boyero</h3>
           <p>12 × 17 cm. $ 344.900</p>
         </a>
-        <a class="modelo" data-linea="organicas" href="modelo/doradito.html">
+        <a class="modelo" data-linea="organicas" data-oculto href="modelo/doradito.html">
           <span class="modelo__caja modelo__caja--foto"><img src="imagenes/modelos/doradito.webp" alt="Doradito" width="620" height="620" loading="lazy"></span>
           <h3>Doradito</h3>
           <p>12 × 18 cm. $ 331.200</p>
         </a>
-        <a class="modelo" data-linea="arquitectonicas" href="modelo/chaja.html">
+        <a class="modelo" data-linea="arquitectonicas" data-oculto href="modelo/chaja.html">
           <span class="modelo__caja modelo__caja--foto"><img src="imagenes/modelos/chaja.webp" alt="Chajá" width="620" height="620" loading="lazy"></span>
           <h3>Chajá</h3>
           <p>18 × 13 cm. $ 318.600</p>
         </a>
-        <a class="modelo" data-linea="organicas" href="modelo/chingolo.html">
+        <a class="modelo" data-linea="organicas" data-oculto href="modelo/chingolo.html">
           <span class="modelo__caja modelo__caja--foto"><img src="imagenes/modelos/chingolo.webp" alt="Chingolo" width="620" height="620" loading="lazy"></span>
           <h3>Chingolo</h3>
           <p>13 × 14 cm. $ 297.400</p>
@@ -149,7 +150,7 @@
           <h3>Federal</h3>
           <p>15 × 14 cm. $ 232.600</p>
         </a>
-        <a class="modelo" data-linea="geometricas" href="modelo/cardenal.html">
+        <a class="modelo" data-linea="geometricas" data-oculto href="modelo/cardenal.html">
           <span class="modelo__caja modelo__caja--foto"><img src="imagenes/modelos/cardenal.webp" alt="Cardenal" width="620" height="620" loading="lazy"></span>
           <h3>Cardenal</h3>
           <p>11 × 16 cm. $ 219.300</p>
@@ -159,7 +160,7 @@
           <h3>Benteveo</h3>
           <p>14 × 17 cm. $ 207.700</p>
         </a>
-        <a class="modelo" data-linea="arquitectonicas" href="modelo/chivi.html">
+        <a class="modelo" data-linea="arquitectonicas" data-oculto href="modelo/chivi.html">
           <span class="modelo__caja modelo__caja--foto"><img src="imagenes/modelos/chivi.webp" alt="Chiví" width="620" height="620" loading="lazy"></span>
           <h3>Chiví</h3>
           <p>10 × 18 cm. $ 194.400</p>

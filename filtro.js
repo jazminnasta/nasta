@@ -1,7 +1,11 @@
 (() => {
   const grilla = document.querySelector(".grilla");
   if (!grilla) return;
-  const tarjetas = [...grilla.querySelectorAll(".modelo")];
+  // Las ocultas las esconde el CSS por [data-oculto]; con ?todos se les saca el
+  // atributo y vuelven al juego como una más.
+  const todas = [...grilla.querySelectorAll(".modelo")];
+  if (window.TODOS) for (const t of todas) t.removeAttribute("data-oculto");
+  const tarjetas = todas.filter((t) => !t.hasAttribute("data-oculto"));
   const botones = [...document.querySelectorAll(".filtro button")];
   const cuenta = document.querySelector(".filtro__cuenta");
   const quieto = matchMedia("(prefers-reduced-motion: reduce)");
@@ -26,7 +30,7 @@
     else aplicar(linea);
     if (historia)
       history.replaceState(null, "",
-        linea === "todas" ? location.pathname : "#" + linea);
+        linea === "todas" ? location.pathname + location.search : "#" + linea);
   };
 
   botones.forEach((b) =>
