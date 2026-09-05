@@ -7,11 +7,12 @@ Catálogo de lámparas. HTML y CSS a mano, sin build ni dependencias: se abre
 
     index.html            portada: las cuatro familias, el taller y pedidos
     index1/2/3.html       la misma portada con cada versión de logo, para comparar
-    modelos.html          los veinticinco modelos, con filtro por familia
+    modelos.html          la grilla, con filtro por familia (veinte a la vista)
     modelo/<slug>.html    la ficha de cada lámpara, 25 páginas
     logos.html            las versiones de logo comparadas (no está enlazada)
     estilo.css            todo el CSS; colores y tipografías arriba, en :root
     filtro.js             el filtro de modelos.html, 40 líneas, sin librerías
+    todos.js              lo que hace el ?todos, en todas las páginas
     favicon.svg           la N, con variante para modo oscuro del navegador
     logos/                los logos en SVG
     imagenes/familias/    las cuatro fotos de la portada, 4:3 (183 kB)
@@ -56,6 +57,41 @@ un solo archivo: `../herramientas/catalogo.py`, un diccionario por modelo. Si ca
 `../herramientas/armar.py`, se regeneran las páginas. También podés editar el
 HTML a mano y no volver a correr el script nunca más: son archivos normales, no
 hay build. Lo que no se puede es hacer las dos cosas: el script pisa el HTML.
+
+## Modelos ocultos: el `?todos`
+
+Cinco modelos no se muestran: **Cardenal, Chajá, Chingolo, Doradito y Chiví**.
+La lista está en `OCULTOS`, en `catalogo.py`. Agregar o sacar un slug de ahí y
+correr `armar.py` es todo lo que hace falta.
+
+Un oculto sigue teniendo su ficha en `modelo/<slug>.html` y se puede entrar por
+la URL directa: sirve como link suelto para mandarle a alguien. Lo que cambia es
+que no sale en la grilla, no lo cuenta el filtro, y el recorrido
+anterior/siguiente de las fichas lo saltea.
+
+Agregando **`?todos`** a la URL vuelven a aparecer los cinco:
+`modelos.html?todos`. Una vez adentro, el `?todos` se pega solo a los links
+internos, así que se puede navegar todo el sitio sin volver a escribirlo. Los
+textos que dicen una cantidad ("Veinte modelos", "Ver los veinte modelos")
+también cambian a veinticinco.
+
+**No es un candado.** Los cinco modelos están en el HTML de `modelos.html`
+—escondidos con CSS— y sus fichas están publicadas. Cualquiera que mire el
+fuente los ve. Sirve para no mostrarlos, no para que no se puedan ver.
+
+Cómo está hecho, por si hay que tocarlo:
+
+    catalogo.py   OCULTOS, y vecinos(m, entre=…) para el recorrido salteado
+    armar.py      cuantos() escupe <span data-todos="Veinticinco">Veinte</span>
+                  las tarjetas ocultas llevan data-oculto
+                  los links de al lado llevan data-todos-href con el otro destino
+    estilo.css    .grilla .modelo[data-oculto]{display:none}
+    todos.js      con ?todos: cambia los [data-todos], los [data-todos-href],
+                  y le pega ?todos a los links internos
+    filtro.js     si hay ?todos, le saca data-oculto a las tarjetas y listo
+
+El orden importa: `todos.js` va antes que `filtro.js` en `modelos.html`, y el
+CSS es el que esconde (no el JS), así que no hay parpadeo al cargar.
 
 ## Las fotos
 
@@ -147,6 +183,10 @@ listo, con cualquier hosting que sirva archivos.
 Los enlaces internos llevan la extensión puesta (`modelos.html`, no `/modelos`),
 así que funcionan igual abriendo el `index.html` con doble clic que servidos
 desde una carpeta. No hace falta configurar nada.
+
+Las fichas de los cinco modelos ocultos también se suben: son parte del sitio,
+sólo que no están enlazadas. Si no querés que existan, sacalas de `MODELOS` en
+`catalogo.py` en vez de ponerlas en `OCULTOS`.
 
 Ojo con dos archivos que quedan públicos si se sube todo: `logos.html` (la hoja
 de comparación de logos) e `index1/2/3.html` (la misma portada con cada logo).
